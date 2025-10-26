@@ -1,0 +1,26 @@
+CREATE DATABASE MovieCatalogue;
+USE MovieCatalogue;
+CREATE TABLE Genre (
+    INT IDENTITY(1,1) PRIMARY KEY,
+    GenreName VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Director (
+    INT IDENTITY(1,1) PRIMARY KEY,
+    DirectorName VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Rating (
+    RatingID INT IDENTITY(1,1) PRIMARY KEY,
+    RatingName VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Actor  (
+    INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName VARCHAR(30) NOT NULL,
+    LastName VARCHAR(30) NOT NULL, 
+    BirthDate DATE NOT NULL
+);
+
+
+
