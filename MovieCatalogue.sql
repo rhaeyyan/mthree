@@ -2,7 +2,7 @@ CREATE DATABASE MovieCatalogue;
 USE MovieCatalogue;
 
 CREATE TABLE Genre (
-    INT IDENTITY(1,1) PRIMARY KEY,
+    GenreID INT IDENTITY(1,1) PRIMARY KEY,
     GenreName VARCHAR(30) NOT NULL
 );
 
@@ -10,6 +10,7 @@ CREATE TABLE Director (
     DirectorID INT IDENTITY(1,1) PRIMARY KEY,
     FirstName VARCHAR(30) NOT NULL,
     LastName VARCHAR(30) NOT NULL,
+    BirthDate DATE NOT NULL,
 );
 
 CREATE TABLE Rating (
@@ -38,4 +39,13 @@ CREATE TABLE Movie (
     CONSTRAINT FK_Movie_Rating FOREIGN KEY (RatingID) REFERENCES Rating(RatingID)
 );
 
-
+CREATE TABLE CastMembers (
+    CastMemberID INT IDENTITY(1,1) PRIMARY KEY,
+    ActorID INT NOT NULL,
+    MovieID INT NOT NULL,
+    Role VARCHAR(50) NOT NULL,
+    -- Constraints
+    CONSTRAINT FK_CastMembers_Actor FOREIGN KEY (ActorID) REFERENCES Actor(ActorID),
+    CONSTRAINT FK_CastMembers_Movie FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
+    CONSTRAINT UQ_CastMembers_Actor_Movie_Role UNIQUE (ActorID, MovieID, Role) 
+);
