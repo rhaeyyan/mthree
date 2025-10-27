@@ -8,9 +8,9 @@ CREATE TABLE Genre (
 
 CREATE TABLE Director (
     DirectorID INT AUTO_INCREMENT PRIMARY KEY,
-    FirstName VARCHAR(30) NOT NULL,
-    LastName VARCHAR(30) NOT NULL,
-    BirthDate DATE NOT NULL,
+    FirstName VARCHAR(30) NOT NULL
+    LastName VARCHAR(30) NOT NULL
+    BirthDate DATE NOT NULL
 );
 
 CREATE TABLE Rating (
@@ -20,19 +20,19 @@ CREATE TABLE Rating (
 
 CREATE TABLE Actor  (
     ActorID INT AUTO_INCREMENT PRIMARY KEY,
-    FirstName VARCHAR(30) NOT NULL,
-    LastName VARCHAR(30) NOT NULL, 
+    FirstName VARCHAR(30) NOT NULL
+    LastName VARCHAR(30) NOT NULL
     BirthDate DATE NOT NULL
 );
 
 CREATE TABLE Movie (
     MovieID INT AUTO_INCREMENT PRIMARY KEY,
-    Title VARCHAR(128) NOT NULL,
-    ReleaseDate DATE NOT NULL,
+    Title VARCHAR(128) NOT NULL
+    ReleaseDate DATE NOT NULL
     -- Foreign Keys
-    GenreID INT NOT NULL,
-    DirectorID INT NOT NULL,
-    RatingID INT NOT NULL,
+    GenreID INT NOT NULL
+    DirectorID INT NOT NULL
+    RatingID INT NOT NULL
     -- Constraints
     CONSTRAINT FK_Movie_Genre FOREIGN KEY (GenreID) REFERENCES Genre(GenreID),
     CONSTRAINT FK_Movie_Director FOREIGN KEY (DirectorID) REFERENCES Director(DirectorID),
@@ -41,9 +41,9 @@ CREATE TABLE Movie (
 
 CREATE TABLE CastMembers (
     CastMemberID INT AUTO_INCREMENT PRIMARY KEY,
-    ActorID INT NOT NULL,
-    MovieID INT NOT NULL,
-    Role VARCHAR(50) NOT NULL,
+    ActorID INT NOT NULL
+    MovieID INT NOT NULL
+    Role VARCHAR(50) NOT NULL
     -- Constraints
     CONSTRAINT FK_CastMembers_Actor FOREIGN KEY (ActorID) REFERENCES Actor(ActorID),
     CONSTRAINT FK_CastMembers_Movie FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
